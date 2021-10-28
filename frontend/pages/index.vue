@@ -36,7 +36,7 @@ export default class PageIndex extends Vue {
     const edges = new three.EdgesGeometry(terrainGeometry)
     const line = new three.LineSegments(
       edges,
-      new three.LineBasicMaterial({ color: 0x585858 })
+      new three.LineBasicMaterial({ color: 0x000000 })
     )
     this.scene.add(line)
     this.terrain = new three.Mesh(terrainGeometry, terrainMaterial)
@@ -49,15 +49,19 @@ export default class PageIndex extends Vue {
 
   initKeyDown() {
     document.onkeydown = (e) => {
-      console.debug(e)
       if (e.key === 'ArrowUp') {
-        this.globalCamera?.translateZ(0.5)
-      } else if (e.key === 'ArrowDown') {
-        this.globalCamera?.translateZ(-0.5)
-      } else if (e.key === 'ArrowRight') {
         this.globalCamera?.translateY(0.5)
-      } else if (e.key === 'ArrowLeft') {
+      } else if (e.key === 'ArrowDown') {
         this.globalCamera?.translateY(-0.5)
+      } else if (e.key === 'ArrowRight') {
+        this.globalCamera?.translateX(0.5)
+      } else if (e.key === 'ArrowLeft') {
+        this.globalCamera?.translateX(-0.5)
+      } else if (e.key === 'PageUp') {
+        this.globalCamera?.translateZ(0.5)
+      } else if (e.key === 'PageDown') {
+        this.globalCamera?.translateZ(-0.5)
+        console.debug(this.globalCamera.position.z)
       }
     }
   }
