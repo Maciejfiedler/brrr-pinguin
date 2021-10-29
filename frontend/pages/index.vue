@@ -61,8 +61,12 @@ export default class PageIndex extends Vue {
         this.globalCamera?.translateZ(0.5)
       } else if (e.key === 'PageDown') {
         this.globalCamera?.translateZ(-0.5)
-        console.debug(this.globalCamera.position.z)
       }
+      console.debug({
+        x: this.globalCamera?.position.x,
+        y: this.globalCamera?.position.y,
+        z: this.globalCamera?.position.z
+      })
     }
   }
 }
